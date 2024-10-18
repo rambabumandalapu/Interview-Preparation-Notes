@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Preparation Resources</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-page setup */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2c2c54, #181818);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: backgroundMove 8s ease-in-out infinite;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* Container styling */
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      animation: zoomIn 1.8s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Heading Styling */
+    h1 {
+      font-size: 3em;
+      color: #ffffff;
+      margin-bottom: 25px;
+      opacity: 0;
+      animation: fadeInTitle 1.8s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    /* Paragraph Styling */
+    p {
+      font-size: 1.3em;
+      color: #ffffff;
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Link Button Styling */
+    a {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 15px 30px;
+      background-color: #1abc9c;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0, 255, 150, 0.3);
+      transition: transform 0.4s ease, background-color 0.3s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    a:hover {
+      background-color: #16a085;
+      transform: scale(1.12);
+      box-shadow: 0 12px 24px rgba(0, 255, 150, 0.6);
+    }
+
+    .subscribe {
+      background-color: #e74c3c;
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .subscribe:hover {
+      background-color: #c0392b;
+      box-shadow: 0 12px 24px rgba(255, 0, 0, 0.6);
+    }
+
+    /* Animation: background move */
+    @keyframes backgroundMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Animation: zoom in container */
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Animation: fade in title */
+    @keyframes fadeInTitle {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation: fade in paragraphs and buttons */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💻 Interview Preparation Resources 💻</h1>
+    
+    <p style="animation-delay: 0.5s;">🔥 Core Java Interview Questions and Answers</p>
+    <a href="https://docs.google.com/document/d/1ID8Ec7RMbMhyg4skEBEAbcPLd4XxHBYcwCQlWgxKM3U/export?format=pdf" target="_blank" style="animation-delay: 0.5s;">👉 Download PDF</a>
+    
+    <p style="animation-delay: 0.7s;">🚀 Spring Boot Interview Questions and Answers</p>
+    <a href="https://docs.google.com/document/d/1R0ISnJ7QK4AFvyRrH1tCcTWqHiOujEhfXjWOGtgyt04/export?format=pdf" target="_blank" style="animation-delay: 0.7s;">👉 Download PDF</a>
+    
+    <p style="animation-delay: 0.9s;">🌐 Microservices Interview Questions and Answers</p>
+    <a href="https://docs.google.com/document/d/176z2gCDeEzbwYZwZDWeTwtfouDxtS8zFhpqRRMXr-1Q/export?format=pdf" target="_blank" style="animation-delay: 0.9s;">👉 Download PDF</a>
+    
+    <p style="animation-delay: 1.1s;">📂 Project Related Questions and Answers</p>
+    <a href="https://docs.google.com/document/d/1Ud1KUp4R5hHauiSAyu1SndN2r61h_2ZJgeciMXv8zIw/export?format=pdf" target="_blank" style="animation-delay: 1.1s;">👉 Download PDF</a>
+    
+    <p style="animation-delay: 1.3s;">💡 All in One Q&A</p>
+    <a href="https://docs.google.com/document/d/1L0dnT9Cke6gLqaqzHN6xZ3NKCUA4LiszCR42-xepMII/export?format=pdf" target="_blank" style="animation-delay: 1.3s;">👉 Download PDF</a>
+
+    <p style="animation-delay: 1.5s;">📢 Subscribe for More Content 📢</p>
+    <a href="https://youtu.be/iJ29-fp-4iA?si=ZKltZxv_6rltyq1O" target="_blank" class="subscribe" style="animation-delay: 1.5s;">👉 Subscribe Now</a>
+  </div>
+
+</body>
+</html>
