@@ -6,35 +6,40 @@
   <title>Interview Preparation Resources</title>
   <style>
     /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Full-page setup */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #2c2c54, #181818);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      animation: backgroundMove 8s ease-in-out infinite;
-      overflow: hidden;
-      color: white;
-    }
+/* Full-page setup */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #2c2c54, #181818);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Changed to allow vertical space for scrolling */
+  min-height: 100vh; /* Changed to allow scrolling */
+  animation: backgroundMove 8s ease-in-out infinite;
+  color: white;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
 
-    /* Container styling */
-    .container {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-      text-align: center;
-      animation: zoomIn 1.8s ease;
-      backdrop-filter: blur(10px);
-    }
+/* Container styling */
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  animation: zoomIn 1.8s ease;
+  backdrop-filter: blur(10px);
+  margin: 50px 0; /* Added margin for space between elements */
+}
+
+/* Remaining styles stay the same */
+
 
     /* Heading Styling */
     h1 {
