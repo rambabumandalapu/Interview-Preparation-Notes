@@ -1,0 +1,285 @@
+let arr = [
+    { 'name': 'A', 'age': 34 },
+    { 'name': 'B', 'age': 35 },
+    { 'name': 'A', 'age': 67 },
+    { 'name': 'ABC', 'age': 34 },
+    { 'name': 'ABC', 'age': 344 },
+    { 'name': 'ABC', 'age': 36 }
+];
+// output :- {A: 2, B: 1, ABC: 3}
+
+
+const arr = [
+    { 'name': 'A', 'age': 34 },
+    { 'name': 'B', 'age': 35 },
+    { 'name': 'A', 'age': 67 },
+    { 'name': 'ABC', 'age': 34 },
+    { 'name': 'ABC', 'age': 344 },
+    { 'name': 'ABC', 'age': 36 }
+];
+
+// Count occurrences of each name
+const nameCounts = arr.reduce((acc, curr) => {
+    acc[curr.name] = (acc[curr.name] || 0) + 1;
+    return acc;
+}, {});
+
+console.log(nameCounts); // Output: { A: 2, B: 1, ABC: 3 }
+
+int arr[]={3,60,0,10,45,0,23,0,31,0,34}
+output ={3,60,10,45,23,31,34,0,0,0,0}
+
+int output[] = new int[arr.length];
+for{int i=0; i< arr.length; i++){
+if(arr[i]!=0) {
+
+}
+
+
+
+which java 8 api supports aysnchromus programming
+
+Java 8 introduced the java.util.concurrent.CompletableFuture API, which supports asynchronous programming. This API allows you to write non-blocking, asynchronous code in a more readable and maintainable way. Here are a few key features of CompletableFuture:
+
+Asynchronous Task Execution: You can run tasks asynchronously using methods like supplyAsync and runAsync.
+Chaining Tasks: You can chain multiple tasks together using methods like thenApply, thenAccept, and thenRun.
+Combining Futures: You can combine multiple CompletableFuture instances using methods like thenCombine, thenCompose, and allOf.
+
+Here's a simple example to illustrate its usage:
+
+import java.util.concurrent.CompletableFuture;
+
+public class AsyncExample {
+    public static void main(String[] args) {
+        CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> {
+            // Simulate a long-running task
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            return "Hello, World!";
+        }).thenAccept(result -> {
+            // Process the result
+            System.out.println(result);
+        });
+
+        // Wait for the future to complete
+        future.join();
+    }
+}
+
+
+In this example, the task runs asynchronously, and once it completes, the result is processed in the thenAccept block. This approach helps in writing more efficient and responsive applications.
+Absolutely! In Java, the Consumer interface is a part of the java.util.function package and is used to represent an operation that accepts a single input argument and returns no result. It is often used in functional programming and lambda expressions. Here are some key methods and concepts related to the Consumer interface:
+
+1. accept(T t)
+
+This is the primary method of the Consumer interface. It performs the operation on the given argument.
+
+Consumer<String> printConsumer = (s) -> System.out.println(s);
+printConsumer.accept("Hello, World!"); // Output: Hello, World!
+
+2. andThen(Consumer<? super T> after)
+
+This method returns a composed Consumer that performs, in sequence, the operation represented by this Consumer followed by the operation represented by the after Consumer. If performing either operation throws an exception, it is relayed to the caller of the composed operation.
+
+Consumer<String> firstConsumer = (s) -> System.out.print("First: " + s);
+Consumer<String> secondConsumer = (s) -> System.out.println(", Second: " + s);
+
+Consumer<String> combinedConsumer = firstConsumer.andThen(secondConsumer);
+combinedConsumer.accept("Hello"); // Output: First: Hello, Second: Hello
+
+3. Using Consumer with Collections
+
+The Consumer interface is often used with collections to perform operations on each element.
+
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach((name) -> System.out.println(name));
+// Output:
+// Alice
+// Bob
+// Charlie
+
+4. Custom Consumer Implementations
+
+You can also create custom implementations of the Consumer interface.
+
+class PrintConsumer implements Consumer<String> {
+    @Override
+    public void accept(String s) {
+        System.out.println("Custom Consumer: " + s);
+    }
+}
+
+PrintConsumer customConsumer = new PrintConsumer();
+customConsumer.accept("Hello, Custom!"); // Output: Custom Consumer: Hello, Custom!
+
+Summary
+
+The Consumer interface is a powerful tool in Java for performing operations on single input arguments, especially useful in lambda expressions and functional programming. It enhances code readability and reduces boilerplate code.
+
+Feel free to explore these methods and see how they can simplify your code! If you have any more questions or need further examples, I'm here to help.
+
+
+What was the rule sub class overridden method when applying throws exception.
+
+import java.util.function.Consumer;
+
+public class ConsumerExample {
+    public static void main(String[] args) {
+        // Example Consumer to print a value
+        Consumer<String> printConsumer = s -> System.out.println("Value: " + s);
+
+        // Using accept method
+        printConsumer.accept("Hello, Java!");
+    }
+}
+
+Give me the method names of each interface of above result.
+
+Here’s a breakdown of the method names for each interface from the java.util.function package:
+- Function<T, R>- apply(T t)
+
+- BiFunction<T, U, R>- apply(T t, U u)
+
+- Consumer<T>- accept(T t)
+
+- BiConsumer<T, U>- accept(T t, U u)
+
+- Supplier<T>- get()
+
+- Predicate<T>- test(T t)
+
+- BiPredicate<T, U>- test(T t, U u)
+
+- UnaryOperator<T>- apply(T t) (This is a specialized form of Function)
+
+- BinaryOperator<T>- apply(T t, T u) (This is a specialized form of BiFunction)
+
+
+Let me know if you'd like code examples for any of these! 🚀
+Certainly! Here's an example code snippet for each interface from the java.util.function package:
+
+1. Function<T, R>
+Represents a function that takes one input and returns a result.
+import java.util.function.Function;
+
+public class FunctionExample {
+    public static void main(String[] args) {
+        Function<Integer, String> numberToString = num -> "Number: " + num;
+        System.out.println(numberToString.apply(5)); // Output: Number: 5
+    }
+}
+
+
+
+2. BiFunction<T, U, R>
+Represents a function that takes two inputs and returns a result.
+import java.util.function.BiFunction;
+
+public class BiFunctionExample {
+    public static void main(String[] args) {
+        BiFunction<Integer, Integer, Integer> addNumbers = (a, b) -> a + b;
+        System.out.println(addNumbers.apply(3, 7)); // Output: 10
+    }
+}
+
+
+
+3. Consumer<T>
+Represents an operation that takes one input and returns no result.
+import java.util.function.Consumer;
+
+public class ConsumerExample {
+    public static void main(String[] args) {
+        Consumer<String> printMessage = message -> System.out.println("Message: " + message);
+        printMessage.accept("Hello, World!"); // Output: Message: Hello, World!
+    }
+}
+
+
+
+4. BiConsumer<T, U>
+Represents an operation that takes two inputs and returns no result.
+import java.util.function.BiConsumer;
+
+public class BiConsumerExample {
+    public static void main(String[] args) {
+        BiConsumer<String, Integer> printDetails = (name, age) -> 
+            System.out.println("Name: " + name + ", Age: " + age);
+        printDetails.accept("Alice", 25); // Output: Name: Alice, Age: 25
+    }
+}
+
+
+
+5. Supplier<T>
+Represents a supplier of results (no input, just output).
+import java.util.function.Supplier;
+
+public class SupplierExample {
+    public static void main(String[] args) {
+        Supplier<String> generateMessage = () -> "Hello from Supplier!";
+        System.out.println(generateMessage.get()); // Output: Hello from Supplier!
+    }
+}
+
+
+
+6. Predicate<T>
+Represents a condition that returns a boolean value based on one input.
+import java.util.function.Predicate;
+
+public class PredicateExample {
+    public static void main(String[] args) {
+        Predicate<Integer> isEven = num -> num % 2 == 0;
+        System.out.println(isEven.test(4)); // Output: true
+        System.out.println(isEven.test(7)); // Output: false
+    }
+}
+
+
+
+7. BiPredicate<T, U>
+Represents a condition that returns a boolean value based on two inputs.
+import java.util.function.BiPredicate;
+
+public class BiPredicateExample {
+    public static void main(String[] args) {
+        BiPredicate<Integer, Integer> isSumEven = (a, b) -> (a + b) % 2 == 0;
+        System.out.println(isSumEven.test(3, 5)); // Output: true
+        System.out.println(isSumEven.test(3, 4)); // Output: false
+    }
+}
+
+
+
+8. UnaryOperator<T>
+A specialized Function for an operation on a single input where the output is of the same type.
+import java.util.function.UnaryOperator;
+
+public class UnaryOperatorExample {
+    public static void main(String[] args) {
+        UnaryOperator<Integer> square = num -> num * num;
+        System.out.println(square.apply(5)); // Output: 25
+    }
+}
+
+
+
+9. BinaryOperator<T>
+A specialized BiFunction for operations on two inputs of the same type.
+import java.util.function.BinaryOperator;
+
+public class BinaryOperatorExample {
+    public static void main(String[] args) {
+        BinaryOperator<Integer> multiply = (a, b) -> a * b;
+        System.out.println(multiply.apply(4, 5)); // Output: 20
+    }
+}
+
+
+
+These examples demonstrate how each interface can be used effectively. Let me know if you'd like further insights or variations on these! 🚀
+
