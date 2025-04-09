@@ -1,0 +1,33 @@
+set AWS_ACCESS_KEY_ID=""
+set AWS_SECRET_ACCESS_KEY=""
+set AWS_REGION="us-east-2"
+
+https://www.youtube.com/watch?v=k1RI5locZE4&t=16093s
+
+Hashicorp/terraform io login : rmandalapu/ rambabumandalapu@gmail.com/Tcsrambabu@12345
+GIT LOGIN : Tcsrambabu@12345
+Access Key ID:
+
+Secret Access Key:
+
+ AWS EC2
+ ========
+[.. Spring boot application (version 3)-->Docker Image-- > Docker Hub --> AWS ECS --> AWS Fargate cluster]
+Notes: spring-boot:build-image
+https://www.youtube.com/watch?v=z7_LdCVnCRU
+https://github.com/dhananjaysinghar/AWS_ECS_Spring_Boot_Docker/blob/master/aws_csr.pdf
+ 
+[.. Spring boot application (version 3)-->Docker Image-- > AWS ECR - --> AWS ECS --> AWS Fargate cluster]
+Notes: spring-boot:build-image
+https://www.youtube.com/watch?v=XrJ-DTmP5bs
+
+AWS DevOps | Build a CI/CD in AWS using CodePipeline & CodeBuild | JavaTechie
+https://www.youtube.com/watch?v=aHuCeLn72Lg
+
+
+Deploy Spring Boot Application in AWS using EC2 & S3 | JavaTechie
+https://www.youtube.com/watch?v=LJkkFx7zJJQ
+
+Deploy Spring Boot App in AWS EC2 instance using S3
+https://www.youtube.com/watch?v=w7zDItQBo4c 
+ 
