@@ -1,0 +1,147 @@
+design patterns
+
+saga (orchestration) not choreography
+Certainly! The Saga design pattern is a microservices architectural pattern that helps manage distributed transactions. In a Spring Boot application, you can implement the Saga pattern using orchestration or choreography. Here’s a simple example using orchestration with Spring Boot:
+
+Step 1: Create a Spring Boot Project
+
+You can use Spring Initializr to create a new Spring Boot project with the necessary dependencies:
+
+Spring Web
+Spring Data JPA
+Spring Boot Actuator
+H2 Database (for simplicity)
+Step 2: Define the Entities
+
+Create entities for the services involved in the transaction. For example, let's consider an order service and a payment service.
+
+Order Entity:
+
+@Entity
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String status;
+    private Double amount;
+
+    // Getters and Setters
+}
+
+
+Payment Entity:
+
+@Entity
+public class Payment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long orderId;
+    private String status;
+
+    // Getters and Setters
+}
+
+Step 3: Create Repositories
+
+Define repositories for the entities.
+
+OrderRepository:
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
+}
+
+
+PaymentRepository:
+
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
+}
+
+Step 4: Implement the Saga Orchestrator
+
+Create a service to handle the saga orchestration.
+
+OrderService:
+
+@Service
+public class OrderService {
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private PaymentService paymentService;
+
+    @Transactional
+    public Order createOrder(Order order) {
+        order.setStatus("CREATED");
+        order = orderRepository.save(order);
+
+        try {
+            paymentService.processPayment(order);
+            order.setStatus("COMPLETED");
+        } catch (Exception e) {
+            order.setStatus("FAILED");
+        }
+
+        return orderRepository.save(order);
+    }
+}
+
+
+PaymentService:
+
+@Service
+public class PaymentService {
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    public void processPayment(Order order) {
+        Payment payment = new Payment();
+        payment.setOrderId(order.getId());
+        payment.setStatus("PENDING");
+        paymentRepository.save(payment);
+
+        // Simulate payment processing
+        if (order.getAmount() > 1000) {
+            throw new RuntimeException("Payment failed");
+        }
+
+        payment.setStatus("COMPLETED");
+        paymentRepository.save(payment);
+    }
+}
+
+Step 5: Create Controllers
+
+Define REST controllers to expose the endpoints.
+
+OrderController:
+
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+    @Autowired
+    private OrderService orderService;
+
+    @PostMapping
+    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        Order createdOrder = orderService.createOrder(order);
+        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+    }
+}
+
+Step 6: Application Properties
+
+Configure the application properties for the H2 database.
+
+application.properties:
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+
+Conclusion
+
+This is a basic example of implementing the Saga pattern using orchestration in a Spring Boot application. You can expand this example by adding more services, handling more complex transactions, and using a message broker for better decoupling and reliability.
