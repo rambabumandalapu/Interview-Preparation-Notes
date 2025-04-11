@@ -145,3 +145,37 @@ spring.h2.console.enabled=true
 Conclusion
 
 This is a basic example of implementing the Saga pattern using orchestration in a Spring Boot application. You can expand this example by adding more services, handling more complex transactions, and using a message broker for better decoupling and reliability.
+
+=============
+==============
+https://dev.to/jackynote/implementing-the-saga-pattern-with-spring-boot-and-activemq-in-microservice-14me
+============
+@Service
+public class SagaOrchestrator {
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
+    private PaymentService paymentService;
+
+    @JmsListener(destination = "bookingQueue")
+    public void handleBooking(Booking booking) {
+
+    }
+
+    @JmsListener(destination = "paymentQueue")
+    public void handlePayment(Payment payment) {
+        try {
+                        // step 2: confirm payment is success or failed. If it's failed
+                        // It's failure, throw exception and rollback.  
+            paymentService.confirmPayment(payment.getBookingId());
+
+                        // Step 3: Mark status is comfirmed in booking.
+                        bookingService.confirmBooking(payment.getBookingId())
+        } catch (Exception e) {
+            // Handle exceptions and initiate compensation
+                        bookingService.cancelBooking(booking.getId());
+            paymentService.cancelPayment(payment.getBookingId());
+        }
+    }
+}
